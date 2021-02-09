@@ -51,8 +51,8 @@ class ConfigParse(argparse.Action):
 
 def get_config_overrides():
     parser = argparse.ArgumentParser(description='Experiments for fair representation learning')
-    parser.add_argument('config', help='Base config file')
-    parser.add_argument('-o', action=ConfigParse,
+    parser.add_argument('config', help='Base config file') #config file
+    parser.add_argument('-o', action=ConfigParse, #config passed in the shell file; in simple_example.sh o exp_name="laftr_example/laftr",train.n_epochs=3 --data adult --dirs local
                         help='Config option overrides. Comma separated, e.g. optim.lr_init=1.0,optim.lr_decay=0.1')
     args, template_args = parser.parse_known_args()
     template_dict = dict(zip(template_args[:-1:2], template_args[1::2]))
@@ -69,7 +69,7 @@ def process_config(verbose=True):
     env = Environment(loader=FileSystemLoader('conf/templates/'),
                       undefined=StrictUndefined)
 
-    config = json.loads(env.from_string(template).render(**template_args))
+    config = json.loads(env.from_string(template).render(**template_args)) #loads the configuration template
 
     if args.o is not None:
         print(args.o)
