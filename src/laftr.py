@@ -33,7 +33,7 @@ def main(args):
 
 
     #get dataset
-    data = Dataset(npzfile=npzfile, **args['data'], batch_size=args['train']['batch_size'])
+    data = Dataset(npzfile=npzfile, **args['data'], batch_size=args['train']['batch_size']) #object from Dataset class
 
     # get model
     if 'Weighted' in args['model']['class']:

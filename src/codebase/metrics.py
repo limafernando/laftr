@@ -68,7 +68,7 @@ def subgroup(fn, mask, Y, Ypred=None):
     Yf = Y.flatten()
     if not Ypred is None: #two-argument functions
         Ypredf = Ypred.flatten()
-        return fn(Yf[m], Ypredf[m])
+        return fn(Yf[m], Ypredf[m]) #access the indexes that are True (the True check subgroup)
     else: #one-argument functions
         return fn(Yf[m])
 
